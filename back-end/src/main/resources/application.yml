@@ -6,5 +6,5 @@ spring:
     password: dgf19981229
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       dialect: org.hibernate.dialect.MySQL5Dialect

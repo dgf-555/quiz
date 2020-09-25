@@ -24,7 +24,7 @@ class Good extends React.Component {
           <p>{this.props.array.price}</p>
           {/* <Button className="button">add to cart</Button> */}
           <button className="button" onClick={this.handleclick}>
-            ＋
+            +
           </button>
         </div>
       </div>

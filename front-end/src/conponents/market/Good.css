@@ -1,0 +1,22 @@
+
+.price_button{
+    width: 150;
+    display: flex;
+    position: relative;
+    margin-top: 3px;
+    margin-left:565px;
+}
+.button{
+    background-color:  #40a9ff;
+    color: white;
+    position: absolute;
+    left: 85px;
+    top: 18px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+img {
+    margin-top: 15px;
+    width: 150px;
+    height: 150px;
+  }

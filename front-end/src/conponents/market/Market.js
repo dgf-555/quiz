@@ -33,7 +33,6 @@ class Market extends React.Component {
       render() {
         return (
           <div>
-              111
             {this.state.goods.map((good) => (
               <div className="good" key="good.name">
                 <Good array={good} />

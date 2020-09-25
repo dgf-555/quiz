@@ -1,16 +1,20 @@
 package com.twuc.shopping.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.twuc.shopping.bo.Good;
 import com.twuc.shopping.po.GoodPO;
 import com.twuc.shopping.repository.ShopRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -46,5 +50,12 @@ class ShopControllerTest {
                 .andExpect(jsonPath("$[0].price", is("单价：1元/瓶")))
                 .andExpect(status().isOk());
     }
-
+    @Test
+    public void should_add_good_to_list() throws Exception {
+        Good good = Good.builder().name("神仙水").price("单价：100元/瓶").build();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonString = objectMapper.writeValueAsString(good);
+        mockMvc.perform(post("/goods").content(jsonString).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
 }

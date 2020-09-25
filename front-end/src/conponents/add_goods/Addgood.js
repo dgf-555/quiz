@@ -23,6 +23,30 @@ class Add extends Component {
       }
     handlesubmit =(event)=>{
       event.preventDefault();
+        // On submit of the form, send a POST request with the data to the server.
+        const URL = 'http://localhost:8080/goods';
+        let myHeaders = new Headers({
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'text/plain',
+          });
+
+          let formData = new FormData();
+    formData.append('name', this.state.name);
+    formData.append('price', this.state.price);
+       fetch(URL, { 
+        method: 'POST',
+        mode: 'cors',//跨域
+        body: formData,
+      })
+      .then(function (res) {
+        return res.json();
+    }).then(function (json) {
+        if (json.code === "200") {
+            console.log("232323233-----正确")
+        }else if (json.code === "400") {
+            console.log("2323232323------错了～")
+        }
+    })
     }
     render() {
       return (
@@ -48,7 +72,7 @@ class Add extends Component {
           onChange={this.handleChange}
           />     
           <br/>
-          <span>*单位</span>
+          {/* <span>*单位</span>
           <br/>
           <input 
           className="form" 
@@ -68,16 +92,16 @@ class Add extends Component {
           value={this.state.url} 
           onChange={this.handleChange}
           />     
-          <br/>
+          <br/> */}
           <input 
           className="submit" 
           type="submit" 
           value="Submit"
           disabled= {
             this.state.name===""||
-            this.state.price===""||
-            this.state.danwei===""||
-            this.state.url===""
+            this.state.price===""
+            // this.state.danwei===""||
+            // this.state.url===""
           }
           />
         </form>

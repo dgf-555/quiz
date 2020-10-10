@@ -21,6 +21,7 @@ public class ShopController {
     public ResponseEntity get_goodList(){
         return ResponseEntity.ok(shopRepository.findAll());
     }
+    @CrossOrigin
     @PostMapping("/goods")
     public ResponseEntity add_user(@RequestBody Good good){
         GoodPO goodPO =GoodPO.builder().name(good.getName()).price(good.getPrice()).build();

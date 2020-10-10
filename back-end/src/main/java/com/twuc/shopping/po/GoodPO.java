@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "good")
@@ -18,7 +15,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 public class GoodPO {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "goodPO_id",strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String price;

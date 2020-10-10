@@ -24,29 +24,33 @@ class Add extends Component {
     handlesubmit =(event)=>{
       event.preventDefault();
         // On submit of the form, send a POST request with the data to the server.
-        const URL = 'http://localhost:8080/goods';
-        let myHeaders = new Headers({
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'text/plain',
-          });
+      const URL = 'http://localhost:8080/goods';
+      let myHeaders = new Headers({
+          // 'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+      });
 
-          let formData = new FormData();
-    formData.append('name', this.state.name);
-    formData.append('price', this.state.price);
-       fetch(URL, { 
+      // let formData = new FormData();
+      // formData.append('name', this.state.name);
+      // formData.append('price', this.state.price);
+
+      let params = {"name":this.state.name,"price":this.state.price};  
+      fetch(URL, { 
+        headers: myHeaders,
         method: 'POST',
         mode: 'cors',//跨域
-        body: formData,
+        body:JSON.stringify(params),
+        //body: formData,
       })
-      .then(function (res) {
-        return res.json();
-    }).then(function (json) {
-        if (json.code === "200") {
-            console.log("232323233-----正确")
-        }else if (json.code === "400") {
-            console.log("2323232323------错了～")
-        }
-    })
+      .then((response) => {
+        if (response.ok) {  
+            return response.status;  
+        }  
+      }).then((status) => {
+        alert(JSON.stringify(status));  
+      }).catch((error) => {  
+        console.error(error);  
+      })
     }
     render() {
       return (

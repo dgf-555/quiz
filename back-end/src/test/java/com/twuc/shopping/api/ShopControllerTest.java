@@ -44,7 +44,7 @@ class ShopControllerTest {
     @Test
     public void should_get_goods_list() throws Exception {
         GoodPO saved = shopRepository.save(GoodPO.builder()
-                .name("可乐1").price("单价：1元/瓶").build());
+                .name("可乐1").price("3").priceUnit("元/瓶").url("https://www.coca-cola.com.cn/content/dam/journey/cn/zh/private/brand/%E4%BA%A7%E5%93%81%E5%9B%BE%E5%8F%AF%E4%B9%90.png").build());
         mockMvc.perform(get("/goods"))
                 .andExpect(jsonPath("$[0].name", is("可乐1")))
                 .andExpect(jsonPath("$[0].price", is("单价：1元/瓶")))
@@ -52,7 +52,7 @@ class ShopControllerTest {
     }
     @Test
     public void should_add_good_to_list() throws Exception {
-        Good good = Good.builder().name("神仙水").price("单价：100元/瓶").build();
+        Good good = Good.builder().name("神仙水").price("100").priceUnit("元/瓶").url("https://www.coca-cola.com.cn/content/dam/journey/cn/zh/private/brand/%E4%BA%A7%E5%93%81%E5%9B%BE%E5%8F%AF%E4%B9%90.png").build();
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonString = objectMapper.writeValueAsString(good);
         mockMvc.perform(post("/goods").content(jsonString).contentType(MediaType.APPLICATION_JSON))

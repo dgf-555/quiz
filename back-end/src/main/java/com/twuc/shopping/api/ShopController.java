@@ -24,7 +24,7 @@ public class ShopController {
     @CrossOrigin
     @PostMapping("/goods")
     public ResponseEntity add_user(@RequestBody Good good){
-        GoodPO goodPO =GoodPO.builder().name(good.getName()).price(good.getPrice()).build();
+        GoodPO goodPO =GoodPO.builder().name(good.getName()).price(good.getPrice()).priceUnit(good.getPriceUnit()).url(good.getUrl()).build();
         shopRepository.save(goodPO);
         return ResponseEntity.ok().build();
     }

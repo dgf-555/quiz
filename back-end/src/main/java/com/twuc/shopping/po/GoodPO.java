@@ -19,4 +19,6 @@ public class GoodPO {
     private int id;
     private String name;
     private String price;
+    private String priceUnit;
+    private String url;
 }

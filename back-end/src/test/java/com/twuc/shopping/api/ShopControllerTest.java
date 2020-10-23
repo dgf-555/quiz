@@ -29,17 +29,17 @@ class ShopControllerTest {
     public void add_goods() throws Exception {
         shopRepository.deleteAll();
         GoodPO saved = shopRepository.save(GoodPO.builder()
-                .name("可乐").price("单价：1元/瓶").build());
+                .name("可乐").price("3").priceUnit("元/瓶").url("https://www.coca-cola.com.cn/content/dam/journey/cn/zh/private/brand/%E4%BA%A7%E5%93%81%E5%9B%BE%E5%8F%AF%E4%B9%90.png").build());
         GoodPO saved1 = shopRepository.save(GoodPO.builder()
-                .name("雪碧").price("单价：2元/瓶").build());
+                .name("雪碧").price("3").priceUnit("元/瓶").url("https://www.coca-cola.com.cn/content/dam/journey/cn/zh/private/brand/%E4%BA%A7%E5%93%81%E5%9B%BE%E9%9B%AA%E7%A2%A7.png").build());
         GoodPO saved2 = shopRepository.save(GoodPO.builder()
-                .name("美年达").price("单价：3元/瓶").build());
+                .name("芬达").price("3").priceUnit("元/瓶").url("https://www.coca-cola.com.cn/content/dam/journey/cn/zh/private/brand/%E4%BA%A7%E5%93%81%E5%9B%BE%E8%8A%AC%E8%BE%BE.png").build());
         GoodPO saved3 = shopRepository.save(GoodPO.builder()
-                .name("王老吉").price("单价：4元/瓶").build());
+                .name("醒目").price("4").priceUnit("元/瓶").url("https://www.coca-cola.com.cn/content/dam/journey/cn/zh/private/brand/%E4%BA%A7%E5%93%81%E5%9B%BE%E9%86%92%E7%9B%AE.png").build());
         GoodPO saved4 = shopRepository.save(GoodPO.builder()
-                .name("咖啡").price("单价：5元/瓶").build());
+                .name("美汁源").price("4.5").priceUnit("元/瓶").url("https://www.coca-cola.com.cn/content/dam/journey/cn/zh/private/brand/%E4%BA%A7%E5%93%81%E5%9B%BE%E7%BE%8E%E6%B1%81%E6%BA%90.png").build());
         GoodPO saved5 = shopRepository.save(GoodPO.builder()
-                .name("橙汁").price("单价：6元/瓶").build());
+                .name("冰露").price("1").priceUnit("元/瓶").url("https://www.coca-cola.com.cn/content/dam/journey/cn/zh/private/brand/%E4%BA%A7%E5%93%81%E5%9B%BE%E5%86%B0%E9%9C%B2.png").build());
     }
     @Test
     public void should_get_goods_list() throws Exception {

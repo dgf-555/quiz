@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class Good {
     private String name;
     private String price;
+    private String priceUnit;
+    private String url;
 }

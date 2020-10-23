@@ -3,17 +3,14 @@ import {Button} from 'antd'
 import './Good.css';
 
 
-class Good extends React.Component {
+class Order extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      price: '20元/瓶',
+      name: '可乐1',
     };
   }
-  // handleclick = () => {
-  //   this.setState({
-  //     clicknum: this.state.clicknum + 1,
-  //   });
-  // };
   render() {
     return (
       <div className="good">
@@ -26,4 +23,4 @@ class Good extends React.Component {
     );
   }
 }
-export default Good;
+export default Order;

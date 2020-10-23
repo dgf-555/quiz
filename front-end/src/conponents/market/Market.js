@@ -7,6 +7,7 @@ class Market extends React.Component {
         super(props);
         this.state = {
           goods: new Array(),
+          number: []
         };
       }
       componentDidMount() {
@@ -34,7 +35,6 @@ class Market extends React.Component {
 
       handleClickAddProduct = name => () => {
         this.setState({
-          clicknum: this.state.clicknum + 1,
         });
       };
       handleclickShoppingCart() {
@@ -51,7 +51,7 @@ class Market extends React.Component {
               </div>
             ))}
           </div>
-          <ShoppingCartOutlined onClick={this.handleclickShoppingCart}/>
+          <ShoppingCartOutlined classname="ShoppingCartOutlined" onClick={this.handleclickShoppingCart}>购物车</ShoppingCartOutlined>
           </div>
         );
       }

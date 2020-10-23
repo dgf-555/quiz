@@ -1,4 +1,5 @@
 import React from 'react';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 import './Market.css';
 import Good from './Good';
 class Market extends React.Component {
@@ -30,14 +31,27 @@ class Market extends React.Component {
           .then((result) => this.setState({ goods: result }))
           .catch((error) => console.log(error));
       }
+
+      handleClickAddProduct = name => () => {
+        this.setState({
+          clicknum: this.state.clicknum + 1,
+        });
+      };
+      handleclickShoppingCart() {
+
+      }
+
       render() {
         return (
           <div>
+          <div className="good">
             {this.state.goods.map((good) => (
-              <div className="good" key="good.name">
-                <Good array={good} />
+              <div key="good.name">
+                <Good array={good} addProduct={this.handleClickAddProduct} />
               </div>
             ))}
+          </div>
+          <ShoppingCartOutlined onClick={this.handleclickShoppingCart}/>
           </div>
         );
       }

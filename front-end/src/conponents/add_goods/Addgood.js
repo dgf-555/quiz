@@ -5,7 +5,7 @@ class Add extends Component {
       this.state = {
         name: '',
         price:'',
-        danwei:'',
+        priceUnit:'',
         url:'',
       };
       console.log('执行了constructor')
@@ -16,11 +16,11 @@ class Add extends Component {
         [event.target.name]:event.target.value,
       })
     }
-    handlepriceChange=(event)=>{
-        this.setState({
-          [event.target.name]:event.target.value,
-        })
-      }
+    // handlepriceChange=(event)=>{
+    //     this.setState({
+    //       [event.target.name]:event.target.value,
+    //     })
+    //   }
     handlesubmit =(event)=>{
       event.preventDefault();
         // On submit of the form, send a POST request with the data to the server.
@@ -34,7 +34,7 @@ class Add extends Component {
       // formData.append('name', this.state.name);
       // formData.append('price', this.state.price);
 
-      let params = {"name":this.state.name,"price":this.state.price};  
+      let params = {"name":this.state.name,"price":this.state.price,"priceUnit":this.state.priceUnit,"url":this.state.url};  
       fetch(URL, { 
         headers: myHeaders,
         method: 'POST',
@@ -76,18 +76,17 @@ class Add extends Component {
           onChange={this.handleChange}
           />     
           <br/>
-          {/* <span>*单位</span>
+          <span>*单位</span>
           <br/>
           <input 
-          className="form" 
+          className="nameform" 
           type='text'
-          name ='danwei' 
-          value={this.state.danwei} 
+          name ='priceUnit' 
+          value={this.state.priceUnit} 
           onChange={this.handleChange}
           />     
           <br/>
-          <br/>
-          <span>*图片</span>
+          <span>*图片地址链接</span>
           <br/>
           <input 
           className="form" 
@@ -96,16 +95,16 @@ class Add extends Component {
           value={this.state.url} 
           onChange={this.handleChange}
           />     
-          <br/> */}
+          <br/>
           <input 
           className="submit" 
           type="submit" 
           value="Submit"
           disabled= {
             this.state.name===""||
-            this.state.price===""
-            // this.state.danwei===""||
-            // this.state.url===""
+            this.state.price===""||
+            this.state.priceUnit===""||
+            this.state.url===""
           }
           />
         </form>
